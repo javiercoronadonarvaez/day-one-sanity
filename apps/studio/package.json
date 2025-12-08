@@ -5,6 +5,9 @@
   "main": "package.json",
   "license": "UNLICENSED",
   "scripts": {
+    "predev": "pnpm run typegen --enforce-required-fields",
+    "prebuild": "pnpm run typegen --enforce-required-fields",
+    "typegen": "sanity schema extract && sanity typegen generate --enforce-required-fields",
     "dev": "sanity dev",
     "start": "sanity start",
     "build": "sanity build",
