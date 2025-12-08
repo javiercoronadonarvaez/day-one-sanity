@@ -8,13 +8,6 @@ const EVENTS_QUERY = defineQuery(`*[
   && date > now()
 ]|order(date asc){_id, name, slug, date}`);
 
-type Event = {
-  _id: string;
-  name: string;
-  slug: { current: string };
-  date: string;
-};
-
 export default async function IndexPage() {
   const { data: events } = await sanityFetch({ query: EVENTS_QUERY });
 
@@ -24,7 +17,7 @@ export default async function IndexPage() {
         Events
       </h1>
       <ul className="grid grid-cols-1 gap-12 lg:grid-cols-2">
-        {events.map((event: Event) => (
+        {events.map((event) => (
           <li
             className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm dark:shadow-gray-900/20"
             key={event._id}
